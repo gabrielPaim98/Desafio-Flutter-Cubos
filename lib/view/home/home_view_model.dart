@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:desafiocubos/model/movie_details.dart';
 import 'package:desafiocubos/service/tmdb_api.dart';
 import 'package:desafiocubos/view/home/home_view.dart';
@@ -14,6 +16,7 @@ class HomeViewModel extends ChangeNotifier {
   List<Genre> genres;
   bool hasError = false; //TODO: implement error catching
   List<Genre> genreFilter = [];
+  Timer _timer;
 
   Future<void> initCalls() async {
     scrollController.addListener(() {
@@ -42,9 +45,9 @@ class HomeViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getMoviesByGenre() async{
+  Future<void> getMoviesByGenre() async {
     List<int> genreIds = [];
-    genreFilter.forEach((e) => genreIds.add(e.id) );
+    genreFilter.forEach((e) => genreIds.add(e.id));
     List<Movie> movies = await tmdbApi.fetchMoviesByGenres(page, genreIds);
 
     movieContainers.clear();
@@ -52,32 +55,37 @@ class HomeViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> onGenreFilterPressed(Genre selectedGenre) async{
+  Future<void> onGenreFilterPressed(Genre selectedGenre) async {
     this.page = 1;
 
-    if(genreFilter.contains(selectedGenre))
+    if (genreFilter.contains(selectedGenre))
       genreFilter.removeWhere((element) => element.id == selectedGenre.id);
     else
       genreFilter.add(selectedGenre);
 
-
-    if(genreFilter.isEmpty){
+    if (genreFilter.isEmpty) {
       movieContainers.clear();
       await getMovies();
-    }
-    else
+    } else
       await getMoviesByGenre();
 
     notifyListeners();
   }
 
-  void _movieToMovieContainer(List<Movie> movies){
+  void _movieToMovieContainer(List<Movie> movies) {
     movies.forEach((movie) {
       String movieGenres = '';
 
       for (int i = 0; i < movie.genreIds.length; i++) {
-        if (i == movie.genreIds.length - 1) movieGenres += genres.firstWhere((element) => element.id == movie.genreIds[i]).name;
-        else movieGenres += genres.firstWhere((element) => element.id == movie.genreIds[i]).name + ' - ';
+        if (i == movie.genreIds.length - 1)
+          movieGenres += genres
+              .firstWhere((element) => element.id == movie.genreIds[i])
+              .name;
+        else
+          movieGenres += genres
+                  .firstWhere((element) => element.id == movie.genreIds[i])
+                  .name +
+              ' - ';
       }
 
       movieContainers.add(MovieContainer(
@@ -85,5 +93,26 @@ class HomeViewModel extends ChangeNotifier {
         genres: movieGenres,
       ));
     });
+  }
+
+  void onSearchChanged(String query) {
+    if (_timer?.isActive ?? false) _timer.cancel();
+    _timer = Timer(const Duration(milliseconds: 300), () {
+      if (query.isNotEmpty)
+        getMovieQuery(query);
+      else {
+        movieContainers.clear();
+        getMovies();
+      }
+    });
+  }
+
+  Future<void> getMovieQuery(String query) async {
+    this.page = 1;
+    List<Movie> movies = await tmdbApi.fetchMovieQuery(page, query);
+
+    movieContainers.clear();
+    _movieToMovieContainer(movies);
+    notifyListeners();
   }
 }

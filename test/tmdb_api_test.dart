@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+
 import '../lib/model/actor.dart';
 import '../lib/model/movie_details.dart';
 import '../lib/model/movie.dart';
@@ -113,6 +114,27 @@ void main(){
       when(client.get(TmdbConsts.moviesByGenresUrl(1, [1, 2]))).thenAnswer((_) async => http.Response('Something went wrong', 500));
 
       List<Movie> movies = await TmdbApi(client).fetchMoviesByGenres(1, [1, 2]);
+
+      expect(movies, isNull);
+    });
+
+    test('should successfully fetch a movie query and return a list of movies', () async{
+      final movieQueryResponse = new File('test/fixtures/movie_query.json');
+      final client = MockClient();
+      when(client.get(TmdbConsts.movieQueryUrl(1, 'filme'))).thenAnswer((_) async => http.Response(movieQueryResponse.readAsStringSync(), 200, headers: {
+        HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
+      }));
+      List<Movie> movies = await TmdbApi(client).fetchMovieQuery(1, 'filme');
+
+      expect(movies, isA<List<Movie>>());
+      expect(movies, hasLength(greaterThan(0)));
+    });
+
+    test('should return null when something goes wrong during the fetch movie query process', () async {
+      final client = MockClient();
+      when(client.get(TmdbConsts.movieQueryUrl(1, 'filme'))).thenAnswer((_) async => http.Response('Something went wrong', 500));
+
+      List<Movie> movies = await TmdbApi(client).fetchMovieQuery(1, 'filme');
 
       expect(movies, isNull);
     });

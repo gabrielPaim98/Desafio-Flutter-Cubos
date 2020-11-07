@@ -70,6 +70,7 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         border: InputBorder.none,
                       ),
+                      onChanged: (value) => homeModel.onSearchChanged(value),
                     ),
                   ),
                   Expanded(

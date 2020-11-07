@@ -1,0 +1,199 @@
+{
+  "page": 1,
+  "total_results": 10,
+  "total_pages": 1,
+  "results": [
+    {
+      "popularity": 2025.862,
+      "vote_count": 86,
+      "video": false,
+      "poster_path": "\/yGmO6NN4HuRdq5nKfo0WLGFmAND.jpg",
+      "id": 724989,
+      "adult": false,
+      "backdrop_path": "\/86L8wqGMDbwURPni2t7FQ0nDjsH.jpg",
+      "original_language": "en",
+      "original_title": "Hard Kill",
+      "genre_ids": [
+        28,
+        53
+      ],
+      "title": "Hard Kill",
+      "vote_average": 4.8,
+      "overview": "O trabalho do bilionário CEO de tecnologia Donovan Chalmers (Willis) é tão valioso que ele contrata mercenários para protegê-lo e um grupo terrorista sequestra sua filha apenas para obtê-lo.",
+      "release_date": "2020-10-23"
+    },
+    {
+      "popularity": 12.42,
+      "vote_count": 335,
+      "video": false,
+      "poster_path": "\/nmtMNxslljllSTVtt7VIOXdxSZp.jpg",
+      "id": 9569,
+      "adult": false,
+      "backdrop_path": "\/2lDo83b3Y5waVB4I8e9WnGU8mbr.jpg",
+      "original_language": "en",
+      "original_title": "Hard to Kill",
+      "genre_ids": [
+        28
+      ],
+      "title": "Difícil de Matar",
+      "vote_average": 5.8,
+      "overview": "Em Los Angeles, 1983, Mason Storm (Steven Seagal), um detetive da polícia, investiga Vernon Trent (William Sadler), um político corrupto que, ao saber que Mason tinha gravado uma fita que o comprometia seriamente, ordena uma emboscada contra a família Storm, que resulta na morte de Felicia (Bonnie Burroughs), a mulher de Mason. No entanto, Sonny, o filho do casal consegue escapar. Quanto a Mason, ele fica tão seriamente ferido que inicialmente foi dado como morto, mas ficou em coma até 1990. Assim que ele sai do coma a notícia chega aos responsáveis pelo atentado, que mandam um assassino até o hospital para \"terminar o serviço\". Porém, prevendo a gravidade da situação ele pede para Andy Stewart (Kelly LeBrock), sua enfermeira, que o tire logo dali. Ela não o atende logo, mas quando vê que se ficarem no hospital morrerão o retira do local e leva Mason para a casa de um amigo, que ficará no exterior por seis meses. Agora Mason tem tempo para se recuperar e preparar sua vingança.",
+      "release_date": "1990-02-09"
+    },
+    {
+      "popularity": 9.03,
+      "vote_count": 1,
+      "video": false,
+      "poster_path": "\/izaYZ85Tda1dNXxnixpWzHbElox.jpg",
+      "id": 662212,
+      "adult": false,
+      "backdrop_path": null,
+      "original_language": "en",
+      "original_title": "Impact Wrestling: Hard to Kill",
+      "genre_ids": [],
+      "title": "Impact Wrestling: Hard to Kill",
+      "vote_average": 2,
+      "overview": "",
+      "release_date": "2020-01-12"
+    },
+    {
+      "popularity": 0.6,
+      "vote_count": 0,
+      "video": false,
+      "poster_path": "\/1Utkw4bqMdSraARaAnJa1t2Eyjg.jpg",
+      "id": 503982,
+      "adult": false,
+      "backdrop_path": "\/ss9Xx5hy6cyDiVTOgHeP98qSd9w.jpg",
+      "original_language": "en",
+      "original_title": "Live Free or Kill Hard",
+      "genre_ids": [
+        28,
+        12,
+        35
+      ],
+      "title": "Live Free or Kill Hard",
+      "vote_average": 0,
+      "overview": "",
+      "release_date": "2015-05-20"
+    },
+    {
+      "popularity": 1.604,
+      "vote_count": 2,
+      "video": false,
+      "poster_path": null,
+      "id": 182327,
+      "adult": false,
+      "backdrop_path": null,
+      "original_language": "cn",
+      "original_title": "至尊特警",
+      "genre_ids": [
+        28
+      ],
+      "title": "至尊特警",
+      "vote_average": 4,
+      "overview": "",
+      "release_date": "1992-01-01"
+    },
+    {
+      "popularity": 0.6,
+      "id": 342216,
+      "video": false,
+      "vote_count": 3,
+      "vote_average": 7.7,
+      "title": "Il est difficile de tuer quelqu'un, même un lundi",
+      "release_date": "2001-05-16",
+      "original_language": "fr",
+      "original_title": "Il est difficile de tuer quelqu'un, même un lundi",
+      "genre_ids": [
+        35,
+        80
+      ],
+      "backdrop_path": "\/bD0Zv9DH29Al6BcGztw8ajjl1Cb.jpg",
+      "adult": false,
+      "overview": "",
+      "poster_path": "\/8LjXXNRCZvEyxoOIsrM3Po6Sp3t.jpg"
+    },
+    {
+      "popularity": 1.027,
+      "vote_count": 5,
+      "video": false,
+      "poster_path": null,
+      "id": 362559,
+      "adult": false,
+      "backdrop_path": null,
+      "original_language": "en",
+      "original_title": "Un tipo dificil de matar",
+      "genre_ids": [
+        28,
+        12,
+        18,
+        37
+      ],
+      "title": "Un tipo dificil de matar",
+      "vote_average": 5.2,
+      "overview": "",
+      "release_date": "1967-02-23"
+    },
+    {
+      "popularity": 1.743,
+      "id": 191563,
+      "video": false,
+      "vote_count": 4,
+      "vote_average": 7,
+      "title": "殺手的童話",
+      "release_date": "1994-08-05",
+      "original_language": "cn",
+      "original_title": "殺手的童話",
+      "genre_ids": [
+        12,
+        10749
+      ],
+      "backdrop_path": "\/cldJoVJvFQxhTGoWxhEGitI7O6u.jpg",
+      "adult": false,
+      "overview": "",
+      "poster_path": "\/t0NkxkgPeEqyzbvw4IGv4XfttZQ.jpg"
+    },
+    {
+      "popularity": 5.444,
+      "vote_count": 51,
+      "video": false,
+      "poster_path": "\/hsaS4ujrv2bwlbryiMgGizYyoZP.jpg",
+      "id": 92647,
+      "adult": false,
+      "backdrop_path": "\/hN1Hi5cS3fvGgQvibp2GGjaCvJV.jpg",
+      "original_language": "sv",
+      "original_title": "Snabba cash II",
+      "genre_ids": [
+        80,
+        18,
+        53
+      ],
+      "title": "Snabba cash II",
+      "vote_average": 6,
+      "overview": "",
+      "release_date": "2012-08-16"
+    },
+    {
+      "popularity": 4.483,
+      "vote_count": 10,
+      "video": false,
+      "poster_path": "\/9gK01a3u2W3AFa2RFC6LZpReb2t.jpg",
+      "id": 78146,
+      "adult": false,
+      "backdrop_path": "\/4lzfZCXKnlBo4i1GLrZTG45x8nd.jpg",
+      "original_language": "en",
+      "original_title": "Tough Guys Don't Dance",
+      "genre_ids": [
+        35,
+        80,
+        18,
+        9648,
+        53
+      ],
+      "title": "A Marca do Passado",
+      "vote_average": 4.8,
+      "overview": "",
+      "release_date": "1987-09-18"
+    }
+  ]
+}

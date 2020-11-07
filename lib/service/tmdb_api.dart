@@ -24,6 +24,20 @@ class TmdbApi {
     return movies;
   }
 
+  Future<List<Movie>> fetchMovieQuery(int page, String query) async {
+    List<Movie> movies;
+    var body;
+    final response =
+    await httpClient.get(TmdbConsts.movieQueryUrl(page, query));
+
+    if (response.statusCode == 200) {
+      body = jsonDecode(response.body)['results'];
+      movies =
+          List<Movie>.from(body.map((movie) => Movie.fromJson(movie))).toList();
+    }
+    return movies;
+  }
+
   Future<MovieDetail> fetchMovieDetails(int id) async {
     var body;
     MovieDetail movieDetail;
@@ -108,6 +122,12 @@ class TmdbConsts {
     }
 
     return '$baseUrl/discover/movie?$apiKey&$language$page&with_genres=$pageList';
+  }
+
+  static String movieQueryUrl(int page, String query){// https://api.themoviedb.org/3/search/movie?api_key=92617104f2646d905240d1f828861df6&language=pt-BR&query=$query&page=1&include_adult=false
+    String _query = query.replaceAll(' ', '%20');
+
+    return '$baseUrl/search/movie?$apiKey&$language&query=$_query&page=$page';
   }
 
   static String movieActorsUrl(int id) =>
