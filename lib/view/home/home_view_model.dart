@@ -16,8 +16,8 @@ class HomeViewModel extends ChangeNotifier {
   List<MovieContainer> movieContainers = [];
   TmdbApi tmdbApi = TmdbApi(new http.Client());
   bool isLoading = true;
+  bool hasError = false;
   List<Genre> genres;
-  bool hasError = false; //TODO: implement error catching
   List<Genre> genreFilter = [];
   Timer _timer;
 
@@ -44,6 +44,12 @@ class HomeViewModel extends ChangeNotifier {
     );
   }
 
+  void onReloadButtonPressed() {
+    isLoading = true;
+    notifyListeners();
+    initCalls();
+  }
+
   Future<void> initCalls() async {
     scrollController.addListener(() {
       if (scrollController.position.pixels ==
@@ -56,16 +62,25 @@ class HomeViewModel extends ChangeNotifier {
     await getGenres();
     await getMovies();
     isLoading = false;
+    print('oi');
     notifyListeners();
   }
 
   Future<void> getGenres() async {
     genres = await tmdbApi.fetchGenreList();
+    if(genres == null) this.hasError = true;
+    else this.hasError = false;
+
     notifyListeners();
   }
 
   Future<void> getMovies() async {
     List<Movie> movies = await tmdbApi.fetchPopularMovies(page);
+    if(movies == null) {
+      this.hasError = true;
+      return;
+    }
+    else this.hasError = false;
 
     _movieToMovieContainer(movies);
     notifyListeners();
@@ -75,6 +90,11 @@ class HomeViewModel extends ChangeNotifier {
     List<int> genreIds = [];
     genreFilter.forEach((e) => genreIds.add(e.id));
     List<Movie> movies = await tmdbApi.fetchMoviesByGenres(page, genreIds);
+    if(movies == null) {
+      this.hasError = true;
+      return;
+    }
+    else this.hasError = false;
 
     movieContainers.clear();
     _movieToMovieContainer(movies);
@@ -136,6 +156,11 @@ class HomeViewModel extends ChangeNotifier {
   Future<void> getMovieQuery(String query) async {
     this.page = 1;
     List<Movie> movies = await tmdbApi.fetchMovieQuery(page, query);
+    if(movies == null) {
+      this.hasError = true;
+      return;
+    }
+    else this.hasError = false;
 
     movieContainers.clear();
     _movieToMovieContainer(movies);

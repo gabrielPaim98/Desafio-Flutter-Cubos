@@ -6,20 +6,25 @@ import 'dart:convert';
 import '../tmdb_key.dart';
 
 class TmdbApi {
-  TmdbApi(this.httpClient);
+  TmdbApi(this.httpClient );
 
   http.Client httpClient;
 
   Future<List<Movie>> fetchPopularMovies(int page) async {
     List<Movie> movies;
     var body;
-    final response =
-        await httpClient.get('${TmdbConsts.popularMoviesUrl}$page');
+    try {
+      final response =
+          await httpClient.get('${TmdbConsts.popularMoviesUrl}$page');
 
-    if (response.statusCode == 200) {
-      body = jsonDecode(response.body)['results'];
-      movies =
-          List<Movie>.from(body.map((movie) => Movie.fromJson(movie))).toList();
+      if (response.statusCode == 200) {
+        body = jsonDecode(response.body)['results'];
+        movies = List<Movie>.from(body.map((movie) => Movie.fromJson(movie)))
+            .toList();
+      }
+    } catch (e) {
+      print('error fetching popular movies: $e');
+      return null;
     }
     return movies;
   }
@@ -27,13 +32,17 @@ class TmdbApi {
   Future<List<Movie>> fetchMovieQuery(int page, String query) async {
     List<Movie> movies;
     var body;
-    final response =
-    await httpClient.get(TmdbConsts.movieQueryUrl(page, query));
+    try {
+      final response =
+          await httpClient.get(TmdbConsts.movieQueryUrl(page, query));
 
-    if (response.statusCode == 200) {
-      body = jsonDecode(response.body)['results'];
-      movies =
-          List<Movie>.from(body.map((movie) => Movie.fromJson(movie))).toList();
+      if (response.statusCode == 200) {
+        body = jsonDecode(response.body)['results'];
+        movies = List<Movie>.from(body.map((movie) => Movie.fromJson(movie)))
+            .toList();
+      }
+    } catch (e) {
+      print('error fetching movie query: $e');
     }
     return movies;
   }
@@ -41,11 +50,17 @@ class TmdbApi {
   Future<MovieDetail> fetchMovieDetails(int id) async {
     var body;
     MovieDetail movieDetail;
-    final response = await httpClient.get('${TmdbConsts.movieDetailsUrl(id)}');
 
-    if (response.statusCode == 200) {
-      body = jsonDecode(response.body);
-      movieDetail = MovieDetail.fromJson(body);
+    try {
+      final response =
+          await httpClient.get('${TmdbConsts.movieDetailsUrl(id)}');
+
+      if (response.statusCode == 200) {
+        body = jsonDecode(response.body);
+        movieDetail = MovieDetail.fromJson(body);
+      }
+    } catch (e) {
+      print('error fetching movie details: $e');
     }
 
     return movieDetail;
@@ -55,11 +70,16 @@ class TmdbApi {
     var body;
     MovieCredits credits;
 
-    final response = await httpClient.get('${TmdbConsts.movieCreditsUrl(id)}');
+    try {
+      final response =
+          await httpClient.get('${TmdbConsts.movieCreditsUrl(id)}');
 
-    if (response.statusCode == 200) {
-      body = jsonDecode(response.body);
-      credits = MovieCredits.fromJson(body);
+      if (response.statusCode == 200) {
+        body = jsonDecode(response.body);
+        credits = MovieCredits.fromJson(body);
+      }
+    } catch (e) {
+      print('error fetching movie credits: $e');
     }
 
     return credits;
@@ -68,12 +88,17 @@ class TmdbApi {
   Future<List<Genre>> fetchGenreList() async {
     List<Genre> genres;
     var body;
-    final response = await httpClient.get(TmdbConsts.genreListUrl);
+    try {
+      final response = await httpClient.get(TmdbConsts.genreListUrl);
 
-    if (response.statusCode == 200) {
-      body = jsonDecode(response.body)['genres'];
-      genres =
-          List<Genre>.from(body.map((genre) => Genre.fromJson(genre))).toList();
+      if (response.statusCode == 200) {
+        body = jsonDecode(response.body)['genres'];
+        genres = List<Genre>.from(body.map((genre) => Genre.fromJson(genre)))
+            .toList();
+      }
+    } catch (e) {
+      print('error fetching genreList: $e');
+      return null;
     }
 
     return genres;
@@ -82,13 +107,18 @@ class TmdbApi {
   Future<List<Movie>> fetchMoviesByGenres(int page, List<int> genres) async {
     List<Movie> movies;
     var body;
-    final response =
-        await httpClient.get(TmdbConsts.moviesByGenresUrl(page, genres));
 
-    if (response.statusCode == 200) {
-      body = jsonDecode(response.body)['results'];
-      movies =
-          List<Movie>.from(body.map((movie) => Movie.fromJson(movie))).toList();
+    try {
+      final response =
+          await httpClient.get(TmdbConsts.moviesByGenresUrl(page, genres));
+
+      if (response.statusCode == 200) {
+        body = jsonDecode(response.body)['results'];
+        movies = List<Movie>.from(body.map((movie) => Movie.fromJson(movie)))
+            .toList();
+      }
+    } catch (e) {
+      print('error fetching movies by genre: $e');
     }
 
     return movies;
@@ -116,14 +146,16 @@ class TmdbConsts {
   static String moviesByGenresUrl(int page, List<int> genres) {
     String pageList = '';
     for (int i = 0; i < genres.length; i++) {
-      if (i == genres.length - 1) pageList += '${genres[i]}';
-      else pageList += '${genres[i]},';
+      if (i == genres.length - 1)
+        pageList += '${genres[i]}';
+      else
+        pageList += '${genres[i]},';
     }
 
     return '$baseUrl/discover/movie?$apiKey&$language$page&with_genres=$pageList';
   }
 
-  static String movieQueryUrl(int page, String query){
+  static String movieQueryUrl(int page, String query) {
     String _query = query.replaceAll(' ', '%20');
 
     return '$baseUrl/search/movie?$apiKey&$language&query=$_query&page=$page';

@@ -102,134 +102,188 @@ class _DetailsViewState extends State<DetailsView> {
                         SizedBox(
                           height: size.height * 0.05,
                         ),
-                        detailsVM.isLoading
-                            ? CircularProgressIndicator()
-                            : Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.baseline,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text(
-                                        detailsVM.movieDetail.voteAverage,
-                                        style: TextStyle(
+                        detailsVM.hasError
+                            ? Padding(
+                                padding: const EdgeInsets.all(16),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Ocorreu um erro ao carregar as informações do filme :(',
+                                      style: TextStyle(
+                                          fontSize: 18, color: KMediumGrey),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    SizedBox(
+                                      height: size.height * 0.03,
+                                    ),
+                                    InkWell(
+                                      onTap: () =>
+                                          detailsVM.onReloadButtonPressed(),
+                                      child: Container(
+                                        decoration: BoxDecoration(
                                           color: KDarkBlue,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 28,
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                        ),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16, vertical: 12),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              'Tentar novamente',
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  color: Colors.white),
+                                            ),
+                                            SizedBox(
+                                              width: size.width * 0.03,
+                                            ),
+                                            Icon(
+                                              Icons.refresh,
+                                              color: Colors.white,
+                                            )
+                                          ],
                                         ),
                                       ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : detailsVM.isLoading
+                                ? CircularProgressIndicator()
+                                : Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.baseline,
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text(
+                                            detailsVM.movieDetail.voteAverage,
+                                            style: TextStyle(
+                                              color: KDarkBlue,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 28,
+                                            ),
+                                          ),
+                                          Text(
+                                            ' /10',
+                                            style: TextStyle(
+                                              color: KMediumGrey,
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.05,
+                                      ),
                                       Text(
-                                        ' /10',
+                                        detailsVM.movieDetail.title
+                                            .toUpperCase(),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18,
+                                            color: KDarkGrey),
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.02,
+                                      ),
+                                      Text(
+                                        'Título original: ${detailsVM.movieDetail.originalTitle}',
                                         style: TextStyle(
                                           color: KMediumGrey,
-                                          fontSize: 18,
+                                          fontSize: 12,
                                         ),
                                       ),
+                                      SizedBox(
+                                        height: size.height * 0.03,
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          InfoBox(
+                                            leadingText: 'Ano:',
+                                            text: detailsVM
+                                                .movieDetail.releaseDate.year
+                                                .toString(),
+                                          ),
+                                          InfoBox(
+                                            leadingText: 'Duração:',
+                                            text: detailsVM.duration,
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.02,
+                                      ),
+                                      Wrap(
+                                        spacing: 16,
+                                        runSpacing: 8,
+                                        alignment: WrapAlignment.spaceEvenly,
+                                        runAlignment: WrapAlignment.spaceEvenly,
+                                        children: List.generate(
+                                          detailsVM.movieDetail.genres.length,
+                                          (index) => GenreBox(
+                                              text: detailsVM.movieDetail
+                                                  .genres[index].name),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.05,
+                                      ),
+                                      DescriptionText(
+                                        title: 'Descrição',
+                                        text: detailsVM.movieDetail.overview,
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.03,
+                                      ),
+                                      Container(
+                                        width: size.width,
+                                        child: InfoBox(
+                                          leadingText: 'ORÇAMENTO:',
+                                          text:
+                                              '\$ ${currencyFormat.format(detailsVM.movieDetail.budget)}',
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.01,
+                                      ),
+                                      Container(
+                                        width: size.width,
+                                        child: InfoBox(
+                                          leadingText: 'PRODUTORAS:',
+                                          text: detailsVM.prodComp,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.03,
+                                      ),
+                                      DescriptionText(
+                                        title: 'Diretor',
+                                        text: detailsVM.producers,
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.03,
+                                      ),
+                                      DescriptionText(
+                                        title: 'Elenco',
+                                        text: detailsVM.cast,
+                                      ),
                                     ],
                                   ),
-                                  SizedBox(
-                                    height: size.height * 0.05,
-                                  ),
-                                  Text(
-                                    detailsVM.movieDetail.title.toUpperCase(),
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                        color: KDarkGrey),
-                                  ),
-                                  SizedBox(
-                                    height: size.height * 0.02,
-                                  ),
-                                  Text(
-                                    'Título original: ${detailsVM.movieDetail.originalTitle}',
-                                    style: TextStyle(
-                                      color: KMediumGrey,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: size.height * 0.03,
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      InfoBox(
-                                        leadingText: 'Ano:',
-                                        text: detailsVM
-                                            .movieDetail.releaseDate.year
-                                            .toString(),
-                                      ),
-                                      InfoBox(
-                                        leadingText: 'Duração:',
-                                        text: detailsVM.duration,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: size.height * 0.02,
-                                  ),
-                                  Wrap(
-                                    spacing: 16,
-                                    runSpacing: 8,
-                                    alignment: WrapAlignment.spaceEvenly,
-                                    runAlignment: WrapAlignment.spaceEvenly,
-                                    children: List.generate(
-                                      detailsVM.movieDetail.genres.length,
-                                      (index) => GenreBox(
-                                          text: detailsVM
-                                              .movieDetail.genres[index].name),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: size.height * 0.05,
-                                  ),
-                                  DescriptionText(
-                                    title: 'Descrição',
-                                    text: detailsVM.movieDetail.overview,
-                                  ),
-                                  SizedBox(
-                                    height: size.height * 0.03,
-                                  ),
-                                  Container(
-                                    width: size.width,
-                                    child: InfoBox(
-                                      leadingText: 'ORÇAMENTO:',
-                                      text:
-                                          '\$ ${currencyFormat.format(detailsVM.movieDetail.budget)}',
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: size.height * 0.01,
-                                  ),
-                                  Container(
-                                    width: size.width,
-                                    child: InfoBox(
-                                      leadingText: 'PRODUTORAS:',
-                                      text: detailsVM.prodComp,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: size.height * 0.03,
-                                  ),
-                                  DescriptionText(
-                                    title: 'Diretor',
-                                    text: detailsVM.producers,
-                                  ),
-                                  SizedBox(
-                                    height: size.height * 0.03,
-                                  ),
-                                  DescriptionText(
-                                    title: 'Elenco',
-                                    text: detailsVM.cast,
-                                  ),
-                                ],
-                              ),
                         SizedBox(
                           height: size.height * 0.03,
                         ),

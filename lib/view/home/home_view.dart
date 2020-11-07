@@ -27,6 +27,53 @@ class _HomeViewState extends State<HomeView> {
       body: SafeArea(
         child: Consumer<HomeViewModel>(
           builder: (context, homeModel, child) {
+            if (homeModel.hasError)
+              return Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Ocorreu um erro ao carregar a lista de filmes :(',
+                      style: TextStyle(fontSize: 18, color: KMediumGrey),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: size.height * 0.03,
+                    ),
+                    InkWell(
+                      onTap: () => homeModel.onReloadButtonPressed(),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: KDarkBlue,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Tentar novamente',
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.white),
+                            ),
+                            SizedBox(
+                              width: size.width * 0.03,
+                            ),
+                            Icon(
+                              Icons.refresh,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
             if (homeModel.isLoading)
               return Center(
                 child: CircularProgressIndicator(),
@@ -76,24 +123,40 @@ class _HomeViewState extends State<HomeView> {
                   Expanded(
                     child: Stack(
                       children: [
-                        ListView.builder(
-                          controller: homeModel.scrollController,
-                          itemCount: homeModel.movieContainers.length + 2,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            if (index == 0)
-                              return SizedBox(
-                                height: size.height * 0.08,
-                              );
-                            else if (index ==
-                                homeModel.movieContainers.length + 1)
-                              return Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            else
-                              return homeModel.movieContainers[index - 1];
-                          },
-                        ),
+                        homeModel.movieContainers.isEmpty
+                            ? Center(
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: size.height * 0.1,
+                                    ),
+                                    Text(
+                                      'Nenhum resultado encontrado :(',
+                                      style: TextStyle(
+                                          fontSize: 18, color: KMediumGrey),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : ListView.builder(
+                                controller: homeModel.scrollController,
+                                itemCount: homeModel.movieContainers.length + 2,
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  if (index == 0)
+                                    return SizedBox(
+                                      height: size.height * 0.08,
+                                    );
+                                  else if (index ==
+                                      homeModel.movieContainers.length + 1)
+                                    return Center(
+                                      child: CircularProgressIndicator(),
+                                    );
+                                  else
+                                    return homeModel.movieContainers[index - 1];
+                                },
+                              ),
                         Container(
                           // Blur effect
                           height: size.height * 0.16,
@@ -135,9 +198,8 @@ class _HomeViewState extends State<HomeView> {
 }
 
 class CategoryFilter extends StatefulWidget {
-  CategoryFilter({
-    @required this.genre
-  });
+  CategoryFilter({@required this.genre});
+
   final Genre genre;
 
   @override
@@ -196,7 +258,8 @@ class MovieContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () => context.read<HomeViewModel>().onMoviePressed(context, movie.id, '${TmdbConsts.imagePath}${movie.posterPath}'),
+      onTap: () => context.read<HomeViewModel>().onMoviePressed(
+          context, movie.id, '${TmdbConsts.imagePath}${movie.posterPath}'),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.transparent,

@@ -10,29 +10,43 @@ class DetailsViewModel extends ChangeNotifier {
   int movieId;
   TmdbApi tmdbApi = TmdbApi(new http.Client());
   bool isLoading = true;
+  bool hasError = false;
   String cast;
   String producers;
   String prodComp;
   String duration;
 
-  void setMovieId(int movieId, [bool fetchMovieDetails = true]){
+  void setMovieId(int movieId, [bool fetchMovieDetails = true]) {
     isLoading = true;
     this.movieId = movieId;
-    if(fetchMovieDetails) getMovieDetails();
+    if (fetchMovieDetails) getMovieDetails();
 
     notifyListeners();
   }
 
-  Future<void> getMovieDetails() async{
+  void onReloadButtonPressed() {
+    isLoading = true;
+    notifyListeners();
+    getMovieDetails();
+  }
+
+  Future<void> getMovieDetails() async {
     movieDetail = await tmdbApi.fetchMovieDetails(this.movieId);
     movieCredits = await tmdbApi.fetchMovieCredits(this.movieId);
+
+    if (movieDetail == null || movieCredits == null) {
+      this.hasError = true;
+      return;
+    } else
+      this.hasError = false;
+
     setDetailsList();
     isLoading = false;
 
     notifyListeners();
   }
 
-  void setDetailsList(){
+  void setDetailsList() {
     List<String> aux = [];
     movieCredits.cast.forEach((e) {
       aux.add(e.name);
@@ -41,7 +55,7 @@ class DetailsViewModel extends ChangeNotifier {
     aux.clear();
 
     movieCredits.crew.forEach((e) {
-      if(e.job == 'Director') aux.add(e.name);
+      if (e.job == 'Director') aux.add(e.name);
     });
     producers = aux.toString().replaceAll('[', '').replaceAll(']', '');
     aux.clear();
@@ -56,5 +70,4 @@ class DetailsViewModel extends ChangeNotifier {
     int min = movieDetail.runtime - (_duration.inHours * 60);
     duration = '${_duration.inHours}h $min min';
   }
-
 }
