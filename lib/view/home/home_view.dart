@@ -195,23 +195,29 @@ class MovieContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.all(
-          Radius.circular(16),
+    return GestureDetector(
+      onTap: () => context.read<HomeViewModel>().onMoviePressed(context, movie.id, '${TmdbConsts.imagePath}${movie.posterPath}'),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.all(
+            Radius.circular(16),
+          ),
         ),
-      ),
-      margin: const EdgeInsets.only(top: 16, right: 16, left: 16),
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(
-          Radius.circular(16),
-        ),
+        margin: const EdgeInsets.only(top: 16, right: 16, left: 16),
         child: Stack(
           children: [
-            FadeInImage.memoryNetwork(
-              placeholder: kTransparentImage,
-              image: '${TmdbConsts.imagePath}${movie.posterPath}',
+            Hero(
+              tag: movie.id,
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(16),
+                ),
+                child: FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image: '${TmdbConsts.imagePath}${movie.posterPath}',
+                ),
+              ),
             ),
             Positioned(
               bottom: 0,

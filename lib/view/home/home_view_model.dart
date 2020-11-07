@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:desafiocubos/model/movie_details.dart';
 import 'package:desafiocubos/service/tmdb_api.dart';
+import 'package:desafiocubos/view/details/details_view.dart';
 import 'package:desafiocubos/view/home/home_view.dart';
 import 'package:http/http.dart' as http;
 import '../../model/movie.dart';
@@ -17,6 +18,18 @@ class HomeViewModel extends ChangeNotifier {
   bool hasError = false; //TODO: implement error catching
   List<Genre> genreFilter = [];
   Timer _timer;
+
+  void onMoviePressed(BuildContext context, int movieId, String urlTest) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => DetailsView(
+          movieId: movieId,
+          urlTest: urlTest,
+        ),
+      ),
+    );
+  }
 
   Future<void> initCalls() async {
     scrollController.addListener(() {
