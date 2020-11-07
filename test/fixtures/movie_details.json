@@ -1,0 +1,77 @@
+{
+  "adult": false,
+  "backdrop_path": "/86L8wqGMDbwURPni2t7FQ0nDjsH.jpg",
+  "belongs_to_collection": null,
+  "budget": 0,
+  "genres": [
+    {
+      "id": 28,
+      "name": "Ação"
+    },
+    {
+      "id": 53,
+      "name": "Thriller"
+    }
+  ],
+  "homepage": "",
+  "id": 724989,
+  "imdb_id": "tt11656172",
+  "original_language": "en",
+  "original_title": "Hard Kill",
+  "overview": "O trabalho do bilionário CEO de tecnologia Donovan Chalmers (Willis) é tão valioso que ele contrata mercenários para protegê-lo e um grupo terrorista sequestra sua filha apenas para obtê-lo.",
+  "popularity": 2115.001,
+  "poster_path": "/yGmO6NN4HuRdq5nKfo0WLGFmAND.jpg",
+  "production_companies": [
+    {
+      "id": 121204,
+      "logo_path": null,
+      "name": "BondIt Media Capital",
+      "origin_country": "US"
+    },
+    {
+      "id": 130900,
+      "logo_path": null,
+      "name": "Buffalo 8 Productions",
+      "origin_country": "US"
+    },
+    {
+      "id": 85562,
+      "logo_path": null,
+      "name": "River Bay Films",
+      "origin_country": "US"
+    },
+    {
+      "id": 65649,
+      "logo_path": "/2xZVvFYyVtIHSo4vG5R0IIak0EL.png",
+      "name": "SSS Entertainment",
+      "origin_country": "US"
+    },
+    {
+      "id": 10405,
+      "logo_path": null,
+      "name": "EFO Films",
+      "origin_country": "US"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "release_date": "2020-10-23",
+  "revenue": 0,
+  "runtime": 98,
+  "spoken_languages": [
+    {
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Released",
+  "tagline": "",
+  "title": "Hard Kill",
+  "video": false,
+  "vote_average": 4.8,
+  "vote_count": 86
+}

@@ -1,0 +1,410 @@
+{
+  "page": 1,
+  "total_results": 10000,
+  "total_pages": 500,
+  "results": [
+    {
+      "popularity": 2115.001,
+      "vote_count": 72,
+      "video": false,
+      "poster_path": "\/yGmO6NN4HuRdq5nKfo0WLGFmAND.jpg",
+      "id": 724989,
+      "adult": false,
+      "backdrop_path": "\/86L8wqGMDbwURPni2t7FQ0nDjsH.jpg",
+      "original_language": "en",
+      "original_title": "Hard Kill",
+      "genre_ids": [
+        28,
+        53
+      ],
+      "title": "Hard Kill",
+      "vote_average": 4.8,
+      "overview": "O trabalho do bilionário CEO de tecnologia Donovan Chalmers (Willis) é tão valioso que ele contrata mercenários para protegê-lo e um grupo terrorista sequestra sua filha apenas para obtê-lo.",
+      "release_date": "2020-10-23"
+    },
+    {
+      "popularity": 1986.559,
+      "vote_count": 38,
+      "video": false,
+      "poster_path": "\/m9cn5mhW519QKr1YGpGxNWi98VJ.jpg",
+      "id": 635302,
+      "adult": false,
+      "backdrop_path": "\/xoqr4dMbRJnzuhsWDF3XNHQwJ9x.jpg",
+      "original_language": "ja",
+      "original_title": "劇場版「鬼滅の刃」無限列車編",
+      "genre_ids": [
+        16,
+        28,
+        36,
+        12,
+        14,
+        18
+      ],
+      "title": "Demon Slayer: O Trem Infinito",
+      "vote_average": 6.7,
+      "overview": "Tanjiro Kamado, junto com Inosuke Hashibira, um garoto criado por javalis que usa uma cabeça de javali, e Zenitsu Agatsuma, um garoto assustado que revela seu verdadeiro poder quando dorme, embarca no Trem Infinito em uma nova missão com o Hashira de Fogo, Kyojuro Rengoku, para derrotar um demônio que tem atormentado o povo e matado os caçadores de oni que se opõem a ele!",
+      "release_date": "2020-10-16"
+    },
+    {
+      "popularity": 1718.028,
+      "id": 531219,
+      "video": false,
+      "vote_count": 507,
+      "vote_average": 7.1,
+      "title": "Convenção das Bruxas",
+      "release_date": "2020-10-26",
+      "original_language": "en",
+      "original_title": "Roald Dahl's The Witches",
+      "genre_ids": [
+        14,
+        10751,
+        12,
+        35,
+        27
+      ],
+      "backdrop_path": "\/8rIoyM6zYXJNjzGseT3MRusMPWl.jpg",
+      "adult": false,
+      "overview": "Um menino acaba descobrindo uma conferência de bruxas enquanto fica com a avó em um hotel e é transformado em rato pela Grande Bruxa.",
+      "poster_path": "\/kQDfB6dPYoiuUtbSYusNopSXyVp.jpg"
+    },
+    {
+      "popularity": 1438.567,
+      "vote_count": 254,
+      "video": false,
+      "poster_path": "\/7D430eqZj8y3oVkLFfsWXGRcpEG.jpg",
+      "id": 528085,
+      "adult": false,
+      "backdrop_path": "\/5UkzNSOK561c2QRy2Zr4AkADzLT.jpg",
+      "original_language": "en",
+      "original_title": "2067",
+      "genre_ids": [
+        878,
+        53,
+        18
+      ],
+      "title": "2067",
+      "vote_average": 5.1,
+      "overview": "Um grupo de humanos busca respostas no futuro após as florestas, vida selvagem e plantas do planeta serem devastados pela mudança climática.",
+      "release_date": "2020-10-01"
+    },
+    {
+      "popularity": 1075.915,
+      "id": 741074,
+      "video": false,
+      "vote_count": 94,
+      "vote_average": 7.5,
+      "title": "Era Uma Vez um Boneco de Neve",
+      "release_date": "2020-10-23",
+      "original_language": "en",
+      "original_title": "Once Upon a Snowman",
+      "genre_ids": [
+        16,
+        10751,
+        35,
+        14
+      ],
+      "backdrop_path": "\/DA7gzvlBoxMNL0XmGgTZOyv67P.jpg",
+      "adult": false,
+      "overview": "Os primeiros passos de Olaf conforme ele ganha vida e busca sua identidade nas montanhas nevadas dos arredores de Arendelle.",
+      "poster_path": "\/334CebHp60Kg8xhMnJrrTtgiRxK.jpg"
+    },
+    {
+      "popularity": 940.828,
+      "vote_count": 145,
+      "video": false,
+      "poster_path": "\/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
+      "id": 741067,
+      "adult": false,
+      "backdrop_path": "\/aO5ILS7qnqtFIprbJ40zla0jhpu.jpg",
+      "original_language": "en",
+      "original_title": "Welcome to Sudden Death",
+      "genre_ids": [
+        28,
+        53,
+        12,
+        18
+      ],
+      "title": "Morte Súbita 2",
+      "vote_average": 6.4,
+      "overview": "Jesse Freeman é um ex-oficial das forças especiais e especialista em explosivos agora trabalhando regularmente como segurança em uma arena de basquete de última geração. Problemas irromperem quando um grupo de terroristas sequestra o dono da equipe e a filha de Jesse durante a noite de estreia. Enfrentando um relógio de tique-taque e probabilidades impossíveis, cabe a Jesse não apenas salvá-los, mas também uma casa cheia de fãs neste thriller de ação altamente carregado.",
+      "release_date": "2020-09-29"
+    },
+    {
+      "popularity": 867.566,
+      "id": 560050,
+      "video": false,
+      "vote_count": 281,
+      "vote_average": 7.7,
+      "title": "A Caminho da Lua",
+      "release_date": "2020-10-16",
+      "original_language": "en",
+      "original_title": "Over the Moon",
+      "genre_ids": [
+        16,
+        12,
+        10751,
+        14
+      ],
+      "backdrop_path": "\/htBUhLSS7FfHtydgYxUWjL3J1Q1.jpg",
+      "adult": false,
+      "overview": "Uma garota constrói uma nave espacial e parte rumo ao espaço à procura da deusa da lua.",
+      "poster_path": "\/7jalZ1oVkuuVXek0B2BKrFWMUv9.jpg"
+    },
+    {
+      "popularity": 854.888,
+      "id": 497582,
+      "video": false,
+      "vote_count": 2432,
+      "vote_average": 7.6,
+      "title": "Enola Holmes",
+      "release_date": "2020-09-23",
+      "original_language": "en",
+      "original_title": "Enola Holmes",
+      "genre_ids": [
+        80,
+        18,
+        9648
+      ],
+      "backdrop_path": "\/kMe4TKMDNXTKptQPAdOF0oZHq3V.jpg",
+      "adult": false,
+      "overview": "Enola Holmes só tem 16 anos, mas vai fazer de tudo para encontrar a mãe desaparecida, inclusive despistar o irmão Sherlock e ajudar um jovem lorde fugitivo.",
+      "poster_path": "\/riYInlsq2kf1AWoGm80JQW5dLKp.jpg"
+    },
+    {
+      "popularity": 774.843,
+      "vote_count": 707,
+      "video": false,
+      "poster_path": "\/h4ciG34AaQLfk38ltBGMDdxLeF5.jpg",
+      "id": 740985,
+      "adult": false,
+      "backdrop_path": "\/hbrXbVoE0NuA1ORoSGGYNASagrl.jpg",
+      "original_language": "en",
+      "original_title": "Borat Subsequent Moviefilm",
+      "genre_ids": [
+        35
+      ],
+      "title": "Borat: Fita de Cinema Seguinte",
+      "vote_average": 6.7,
+      "overview": "Borat retorna aos Estados Unidos e dessa vez procura oferecer a sua filha em casamento para o vice-presidente, Mike Pence.",
+      "release_date": "2020-10-23"
+    },
+    {
+      "popularity": 684.236,
+      "vote_count": 162,
+      "video": false,
+      "poster_path": "\/6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg",
+      "id": 694919,
+      "adult": false,
+      "backdrop_path": "\/pq0JSpwyT2URytdFG0euztQPAyR.jpg",
+      "original_language": "en",
+      "original_title": "Money Plane",
+      "genre_ids": [
+        28
+      ],
+      "title": "Money Plane",
+      "vote_average": 5.9,
+      "overview": "Um ladrão profissional com dívidas de 40 milhões de dólares deve cometer um último golpe - roubar um cassino aéreo futurista cheio dos criminosos mais perigosos do mundo.",
+      "release_date": "2020-09-29"
+    },
+    {
+      "popularity": 662.037,
+      "vote_count": 710,
+      "video": false,
+      "poster_path": "\/dGVUiqnahQ4ZZRchGRpO2SyhtQY.jpg",
+      "id": 581392,
+      "adult": false,
+      "backdrop_path": "\/2nFzxaAK7JIsk6l7qZ8rFBsa3yW.jpg",
+      "original_language": "ko",
+      "original_title": "반도",
+      "genre_ids": [
+        28,
+        27,
+        53
+      ],
+      "title": "Invasão Zumbi 2: Península",
+      "vote_average": 7,
+      "overview": "A península coreana ficou devastada após o surto de zumbis que atingiu os passageiros de um trem-bala com destino a Busan há quatro anos. Com isso, um ex-soldado que conseguiu fugir do país, Jung-seok, tem a missão de retornar e acaba encontrando alguns sobreviventes.",
+      "release_date": "2020-07-15"
+    },
+    {
+      "popularity": 648.568,
+      "vote_count": 2751,
+      "video": false,
+      "poster_path": "\/72I82eKXCadZWEYygV9GkJOQNEq.jpg",
+      "id": 337401,
+      "adult": false,
+      "backdrop_path": "\/zzWGRw277MNoCs3zhyG3YmYQsXv.jpg",
+      "original_language": "en",
+      "original_title": "Mulan",
+      "genre_ids": [
+        28,
+        12,
+        18,
+        14
+      ],
+      "title": "Mulan",
+      "vote_average": 7.2,
+      "overview": "Hua Mulan é a espirituosa e determinada filha mais velha de um honrado guerreiro. Quando o Imperador da China emite um decreto que um homem de cada família deve servir no exército imperial, Mulan decide tomar o lugar de seu pai, que está doente. Assumindo a identidade de Hua Jun, ela se disfarça de homem para combater os invasores que estão atacando sua nação, provando-se uma grande guerreira.",
+      "release_date": "2020-09-04"
+    },
+    {
+      "popularity": 647.673,
+      "vote_count": 6,
+      "video": false,
+      "poster_path": "\/2xtqkht2u7SkrZPd6zyMRymE4nt.jpg",
+      "id": 499338,
+      "adult": false,
+      "backdrop_path": "\/AuZgtWv4ZRhqD8u9JJMxTQbhz9q.jpg",
+      "original_language": "en",
+      "original_title": "I Believe",
+      "genre_ids": [
+        10751
+      ],
+      "title": "Eu Acredito",
+      "vote_average": 3.2,
+      "overview": "Brian Webber, de 9 anos de idade, tem um encontro sobrenatural com Deus, uma experiência que o leva à aventura das aventuras. Seus pais não estão muito felizes com isso, especialmente seu pai, Simon Webber, um apresentador de TV ateu. Felizmente, Brian encontra aliados no pastor de uma igreja local , e em um fuzileiro naval ferido dos EUA. A fé pura e inocente de Brian produz milagres extraordinários que rapidamente se tornam notícia na cidade.",
+      "release_date": "2020-11-05"
+    },
+    {
+      "popularity": 609.131,
+      "vote_count": 85,
+      "video": false,
+      "poster_path": "\/xqbQtMffXwa3oprse4jiHBMBvdW.jpg",
+      "id": 601844,
+      "adult": false,
+      "backdrop_path": "\/qTrpw2ZUvN7ywUu1kieEsvNDrgQ.jpg",
+      "original_language": "en",
+      "original_title": "Becky",
+      "genre_ids": [
+        53,
+        28,
+        27
+      ],
+      "title": "Becky",
+      "vote_average": 5.8,
+      "overview": "Becky, uma rebelde de 13 anos, é levada para um refúgio de fim de semana em uma casa no lago por seu pai em um esforço para se reconectar após a morte de sua mãe. A viagem piora quando um grupo de condenados em fuga, liderados pelo impiedoso Dominick, invade a casa do lago. Becky decide resolver o problema com as próprias mãos.",
+      "release_date": "2020-07-23"
+    },
+    {
+      "popularity": 591.484,
+      "vote_count": 576,
+      "video": false,
+      "poster_path": "\/6llUjNLsLiAcpIOer9LR631HPoU.jpg",
+      "id": 539885,
+      "adult": false,
+      "backdrop_path": "\/54yOImQgj8i85u9hxxnaIQBRUuo.jpg",
+      "original_language": "en",
+      "original_title": "Ava",
+      "genre_ids": [
+        28,
+        80,
+        18,
+        53
+      ],
+      "title": "Ava",
+      "vote_average": 5.7,
+      "overview": "Eve é uma assassina, que trabalha matando alvos de alto-nível para uma organização secreta. Mas quando uma missão dá terrivelmente errado, ela é forçada a lutar pela própria sobrevivência.",
+      "release_date": "2020-07-02"
+    },
+    {
+      "popularity": 568.36,
+      "id": 590223,
+      "video": false,
+      "vote_count": 276,
+      "vote_average": 7.7,
+      "title": "Problemas Monstruosos",
+      "release_date": "2020-10-16",
+      "original_language": "en",
+      "original_title": "Love and Monsters",
+      "genre_ids": [
+        28,
+        12,
+        35,
+        878
+      ],
+      "backdrop_path": "\/lA5fOBqTOQBQ1s9lEYYPmNXoYLi.jpg",
+      "adult": false,
+      "overview": "Após o mundo ser invadido por monstros, Joel terá de se aventurar por metade do país, em meio a todo tipo de perigos, para tentar encontrar o amor da sua vida.",
+      "poster_path": "\/r4Lm1XKP0VsTgHX4LG4syAwYA2I.jpg"
+    },
+    {
+      "popularity": 528.516,
+      "vote_count": 338,
+      "video": false,
+      "poster_path": "\/uOw5JD8IlD546feZ6oxbIjvN66P.jpg",
+      "id": 718444,
+      "adult": false,
+      "backdrop_path": "\/x4UkhIQuHIJyeeOTdcbZ3t3gBSa.jpg",
+      "original_language": "en",
+      "original_title": "Rogue",
+      "genre_ids": [
+        28,
+        12,
+        18,
+        53
+      ],
+      "title": "Rogue",
+      "vote_average": 5.8,
+      "overview": "Um esquadrão de soldados liderados por O'Hara estão sob a missão de resgatar a filha de um governador de seus captores em um lugar remoto da Africa. Mas quando as coisas dão errados, eles não tem que sobreviver não apenas ao encontro sangrento com uma gangue de rebeldes, mas também a uma horda de leões famintos.",
+      "release_date": "2020-08-20"
+    },
+    {
+      "popularity": 527.485,
+      "vote_count": 68,
+      "video": false,
+      "poster_path": "\/bs3p45IGZUZyqkHa4WLaiSk7xO9.jpg",
+      "id": 721656,
+      "adult": false,
+      "backdrop_path": "\/5gTQmnGYKxDfmUWJ9GUWqrszRxN.jpg",
+      "original_language": "en",
+      "original_title": "Happy Halloween Scooby-Doo!",
+      "genre_ids": [
+        16,
+        10751,
+        9648,
+        35,
+        80
+      ],
+      "title": "Scooby-Doo! Halloween",
+      "vote_average": 8.1,
+      "overview": "O feriado favorito do Scooby-Doo e do Salsicha está chegando! Com monstros de mentira e doces à beça, o Dia das Bruxas é o paraíso desses comilões que saem batendo de porta em porta. Mas neste ano, o doce feriado deles é azedado quando uma lama tóxica infecta a plantação de abóboras da vizinhança, criando abóboras voadoras do mal que, comandadas por sua líder enorme, começam a esmagar tudo o que veem pela frente. Cabe a Scooby-Doo e sua equipe, juntamente com seus dois amigos, Bill Nye, o Cientista e Elvira, a Rainha das Trevas, solucionar esse mistério gigantesco e salvar a Baía Cristal!",
+      "release_date": "2020-10-06"
+    },
+    {
+      "popularity": 522.452,
+      "vote_count": 129,
+      "video": false,
+      "poster_path": "\/xqvX5A24dbIWaeYsMTxxKX5qOfz.jpg",
+      "id": 660982,
+      "adult": false,
+      "backdrop_path": "\/75ooojtgiKYm5LcCczbCexioZze.jpg",
+      "original_language": "en",
+      "original_title": "American Pie Presents: Girls' Rules",
+      "genre_ids": [
+        35
+      ],
+      "title": "American Pie Apresenta: Meninas ao Ataque",
+      "vote_average": 6.2,
+      "overview": "Um grupo de mulheres decide aproveitar seu poder feminino e se unir para conseguir o que querem no último ano do ensino médio.",
+      "release_date": "2020-10-06"
+    },
+    {
+      "popularity": 508.451,
+      "vote_count": 23,
+      "video": false,
+      "poster_path": "\/z0r3YjyJSLqf6Hz0rbBAnEhNXQ7.jpg",
+      "id": 697064,
+      "adult": false,
+      "backdrop_path": "\/7WKIOXJa2JjHygE8Yta3uaCv6GC.jpg",
+      "original_language": "en",
+      "original_title": "Beckman",
+      "genre_ids": [
+        28
+      ],
+      "title": "Beckman",
+      "vote_average": 5.5,
+      "overview": "Um assassino contratado, torna-se o reverendo de uma igreja de Los Angeles, até que um líder de culto e seus subordinados sequestrem sua filha. Cego pela vingança, ele abre um caminho sangrento pela cidade. A única coisa que pode detê-lo é sua nova fé.",
+      "release_date": "2020-09-10"
+    }
+  ]
+}

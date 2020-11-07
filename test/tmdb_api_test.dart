@@ -1,0 +1,120 @@
+import 'dart:convert';
+import 'dart:io';
+import '../lib/model/actor.dart';
+import '../lib/model/movie_details.dart';
+import '../lib/model/movie.dart';
+import '../lib/service/tmdb_api.dart';
+import 'package:test/test.dart';
+import 'package:mockito/mockito.dart';
+import 'package:http/http.dart' as http;
+
+class MockClient extends Mock implements http.Client {}
+
+void main(){
+  group('Tmdb Service', () {
+    test('should successfully fetch popular movies and return a list of movies', () async{
+      final popMoviesResponse = new File('test/fixtures/pop_movies.json');
+      final client = MockClient();
+      when(client.get('${TmdbConsts.popularMoviesUrl}1')).thenAnswer((_) async => http.Response(popMoviesResponse.readAsStringSync(), 200, headers: {
+        HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
+      }));
+      List<Movie> movies = await TmdbApi(client).fetchPopularMovies(1);
+
+      expect(movies, isA<List<Movie>>());
+      expect(movies, hasLength(greaterThan(0)));
+    });
+
+    test('should return null when something goes wrong during the fetch movie list process', () async {
+      final client = MockClient();
+      when(client.get('${TmdbConsts.popularMoviesUrl}1')).thenAnswer((_) async => http.Response('Something went wrong', 500));
+
+      List<Movie> movies = await TmdbApi(client).fetchPopularMovies(1);
+
+      expect(movies, isNull);
+    });
+
+    test('should successfully fetch and return the given movie details', () async{
+      final movieDetailsResponse = new File('test/fixtures/movie_details.json');
+      final client = MockClient();
+      when(client.get(TmdbConsts.movieDetailsUrl(1))).thenAnswer((_) async => http.Response(movieDetailsResponse.readAsStringSync(), 200, headers: {
+        HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
+      }));
+      MovieDetail movieDetail = await TmdbApi(client).fetchMovieDetails(1);
+
+      expect(movieDetail, isA<MovieDetail>());
+      expect(movieDetail, isNotNull);
+    });
+
+    test('should return null when something goes wrong during the fetch movie details process', () async {
+      final client = MockClient();
+      when(client.get(TmdbConsts.movieDetailsUrl(1))).thenAnswer((_) async => http.Response('Something went wrong', 500));
+
+      MovieDetail movieDetail = await TmdbApi(client).fetchMovieDetails(1);
+
+      expect(movieDetail, isNull);
+    });
+
+    test('should successfully fetch and return the given movie actors', () async{
+      final movieActorsResponse = new File('test/fixtures/movie_credits.json');
+      final client = MockClient();
+      when(client.get(TmdbConsts.movieActorsUrl(1))).thenAnswer((_) async => http.Response(movieActorsResponse.readAsStringSync(), 200, headers: {
+        HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
+      }));
+      List<Actor> actors = await TmdbApi(client).fetchActors(1);
+
+      expect(actors, isA<List<Actor>>());
+      expect(actors, isNotNull);
+    });
+
+    test('should return null when something goes wrong during the fetch movie actors process', () async {
+      final client = MockClient();
+      when(client.get(TmdbConsts.movieActorsUrl(1))).thenAnswer((_) async => http.Response('Something went wrong', 500));
+
+      List<Actor> actors = await TmdbApi(client).fetchActors(1);
+
+      expect(actors, isNull);
+    });
+
+    test('should successfully fetch and return all available genres', () async{
+      final genresResponse = new File('test/fixtures/genres.json');
+      final client = MockClient();
+      when(client.get(TmdbConsts.genreListUrl)).thenAnswer((_) async => http.Response(genresResponse.readAsStringSync(), 200, headers: {
+        HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
+      }));
+      List<Genre> genres = await TmdbApi(client).fetchGenreList();
+
+      expect(genres, isA<List<Genre>>());
+      expect(genres, isNotNull);
+    });
+
+    test('should return null when something goes wrong during the fetch genres process', () async {
+      final client = MockClient();
+      when(client.get(TmdbConsts.genreListUrl)).thenAnswer((_) async => http.Response('Something went wrong', 500));
+
+      List<Genre> genres = await TmdbApi(client).fetchGenreList();
+
+      expect(genres, isNull);
+    });
+
+    test('should successfully fetch and return all movies from the given genres', () async{
+      final moviesResponse = new File('test/fixtures/movies_by_genres.json');
+      final client = MockClient();
+      when(client.get(TmdbConsts.moviesByGenresUrl(1, [1, 2]))).thenAnswer((_) async => http.Response(moviesResponse.readAsStringSync(), 200, headers: {
+        HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
+      }));
+      List<Movie> movies = await TmdbApi(client).fetchMoviesByGenres(1, [1, 2]);
+
+      expect(movies, isA<List<Movie>>());
+      expect(movies, isNotNull);
+    });
+
+    test('should return null when something goes wrong during the fetching movies by genres process', () async {
+      final client = MockClient();
+      when(client.get(TmdbConsts.moviesByGenresUrl(1, [1, 2]))).thenAnswer((_) async => http.Response('Something went wrong', 500));
+
+      List<Movie> movies = await TmdbApi(client).fetchMoviesByGenres(1, [1, 2]);
+
+      expect(movies, isNull);
+    });
+  });
+}
