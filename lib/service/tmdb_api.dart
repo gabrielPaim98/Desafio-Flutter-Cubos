@@ -1,4 +1,4 @@
-import '../model/actor.dart';
+import '../model/movie_credits.dart';
 import '../model/movie_details.dart';
 import 'package:http/http.dart' as http;
 import '../model/movie.dart';
@@ -51,19 +51,18 @@ class TmdbApi {
     return movieDetail;
   }
 
-  Future<List<Actor>> fetchActors(int id) async {
+  Future<MovieCredits> fetchMovieCredits(int id) async {
     var body;
-    List<Actor> actors;
+    MovieCredits credits;
 
-    final response = await httpClient.get('${TmdbConsts.movieActorsUrl(id)}');
+    final response = await httpClient.get('${TmdbConsts.movieCreditsUrl(id)}');
 
     if (response.statusCode == 200) {
-      body = jsonDecode(response.body)['cast'];
-      actors =
-          List<Actor>.from(body.map((actor) => Actor.fromJson(actor))).toList();
+      body = jsonDecode(response.body);
+      credits = MovieCredits.fromJson(body);
     }
 
-    return actors;
+    return credits;
   }
 
   Future<List<Genre>> fetchGenreList() async {
@@ -124,12 +123,12 @@ class TmdbConsts {
     return '$baseUrl/discover/movie?$apiKey&$language$page&with_genres=$pageList';
   }
 
-  static String movieQueryUrl(int page, String query){// https://api.themoviedb.org/3/search/movie?api_key=92617104f2646d905240d1f828861df6&language=pt-BR&query=$query&page=1&include_adult=false
+  static String movieQueryUrl(int page, String query){
     String _query = query.replaceAll(' ', '%20');
 
     return '$baseUrl/search/movie?$apiKey&$language&query=$_query&page=$page';
   }
 
-  static String movieActorsUrl(int id) =>
+  static String movieCreditsUrl(int id) =>
       '$baseUrl/movie/$id/credits?$apiKey&$language';
 }

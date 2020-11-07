@@ -1,7 +1,6 @@
-import 'dart:convert';
 import 'dart:io';
 
-import '../lib/model/actor.dart';
+import '../lib/model/movie_credits.dart';
 import '../lib/model/movie_details.dart';
 import '../lib/model/movie.dart';
 import '../lib/service/tmdb_api.dart';
@@ -55,25 +54,25 @@ void main(){
       expect(movieDetail, isNull);
     });
 
-    test('should successfully fetch and return the given movie actors', () async{
-      final movieActorsResponse = new File('test/fixtures/movie_credits.json');
+    test('should successfully fetch and return the given movie credits', () async{
+      final movieCreditsResponse = new File('test/fixtures/movie_credits.json');
       final client = MockClient();
-      when(client.get(TmdbConsts.movieActorsUrl(1))).thenAnswer((_) async => http.Response(movieActorsResponse.readAsStringSync(), 200, headers: {
+      when(client.get(TmdbConsts.movieCreditsUrl(1))).thenAnswer((_) async => http.Response(movieCreditsResponse.readAsStringSync(), 200, headers: {
         HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8',
       }));
-      List<Actor> actors = await TmdbApi(client).fetchActors(1);
+      MovieCredits credits = await TmdbApi(client).fetchMovieCredits(1);
 
-      expect(actors, isA<List<Actor>>());
-      expect(actors, isNotNull);
+      expect(credits, isA<MovieCredits>());
+      expect(credits, isNotNull);
     });
 
-    test('should return null when something goes wrong during the fetch movie actors process', () async {
+    test('should return null when something goes wrong during the fetch movie credits process', () async {
       final client = MockClient();
-      when(client.get(TmdbConsts.movieActorsUrl(1))).thenAnswer((_) async => http.Response('Something went wrong', 500));
+      when(client.get(TmdbConsts.movieCreditsUrl(1))).thenAnswer((_) async => http.Response('Something went wrong', 500));
 
-      List<Actor> actors = await TmdbApi(client).fetchActors(1);
+      MovieCredits credits = await TmdbApi(client).fetchMovieCredits(1);
 
-      expect(actors, isNull);
+      expect(credits, isNull);
     });
 
     test('should successfully fetch and return all available genres', () async{

@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:desafiocubos/model/movie_details.dart';
 import 'package:desafiocubos/service/tmdb_api.dart';
 import 'package:desafiocubos/view/details/details_view.dart';
+import 'package:desafiocubos/view/details/details_view_model.dart';
 import 'package:desafiocubos/view/home/home_view.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 import '../../model/movie.dart';
 import 'package:flutter/material.dart';
 
@@ -20,16 +22,7 @@ class HomeViewModel extends ChangeNotifier {
   Timer _timer;
 
   void onMoviePressed(BuildContext context, int movieId, String urlTest) {
-    /*Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => DetailsView(
-          movieId: movieId,
-          urlTest: urlTest,
-        ),
-      ),
-    );*/
-
+    Provider.of<DetailsViewModel>(context, listen: false).setMovieId(movieId);
     Navigator.push(
       context,
       PageRouteBuilder(
