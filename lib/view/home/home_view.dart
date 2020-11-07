@@ -205,60 +205,65 @@ class MovieContainer extends StatelessWidget {
           ),
         ),
         margin: const EdgeInsets.only(top: 16, right: 16, left: 16),
-        child: Stack(
-          children: [
-            Hero(
-              tag: movie.id,
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(16),
-                ),
-                child: FadeInImage.memoryNetwork(
-                  placeholder: kTransparentImage,
-                  image: '${TmdbConsts.imagePath}${movie.posterPath}',
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              child: Container(
-                width: size.width,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.black.withOpacity(0.01), Colors.black],
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(
+            Radius.circular(16),
+          ),
+          child: Stack(
+            children: [
+              Hero(
+                tag: movie.id,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16),
+                  ),
+                  child: FadeInImage.memoryNetwork(
+                    placeholder: kTransparentImage,
+                    image: '${TmdbConsts.imagePath}${movie.posterPath}',
                   ),
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Text(
-                        movie.title.toUpperCase(),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                child: Container(
+                  width: size.width,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [Colors.black.withOpacity(0.01), Colors.black],
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        child: Text(
+                          movie.title.toUpperCase(),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Text(
+                        genres,
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    Text(
-                      genres,
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
