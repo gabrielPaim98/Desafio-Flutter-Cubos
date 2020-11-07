@@ -8,11 +8,12 @@ import 'package:flutter/material.dart';
 class HomeViewModel extends ChangeNotifier {
   int page = 1;
   final scrollController = ScrollController();
-  List<Movie> movies;
   List<MovieContainer> movieContainers = [];
   TmdbApi tmdbApi = TmdbApi(new http.Client());
   bool isLoading = true;
   List<Genre> genres;
+  bool hasError = false; //TODO: implement error catching
+  List<Genre> genreFilter = [];
 
   Future<void> initCalls() async {
     scrollController.addListener(() {
@@ -35,8 +36,42 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   Future<void> getMovies() async {
-    movies = await tmdbApi.fetchPopularMovies(page);
+    List<Movie> movies = await tmdbApi.fetchPopularMovies(page);
 
+    _movieToMovieContainer(movies);
+    notifyListeners();
+  }
+
+  Future<void> getMoviesByGenre() async{
+    List<int> genreIds = [];
+    genreFilter.forEach((e) => genreIds.add(e.id) );
+    List<Movie> movies = await tmdbApi.fetchMoviesByGenres(page, genreIds);
+
+    movieContainers.clear();
+    _movieToMovieContainer(movies);
+    notifyListeners();
+  }
+
+  Future<void> onGenreFilterPressed(Genre selectedGenre) async{
+    this.page = 1;
+
+    if(genreFilter.contains(selectedGenre))
+      genreFilter.removeWhere((element) => element.id == selectedGenre.id);
+    else
+      genreFilter.add(selectedGenre);
+
+
+    if(genreFilter.isEmpty){
+      movieContainers.clear();
+      await getMovies();
+    }
+    else
+      await getMoviesByGenre();
+
+    notifyListeners();
+  }
+
+  void _movieToMovieContainer(List<Movie> movies){
     movies.forEach((movie) {
       String movieGenres = '';
 
@@ -50,6 +85,5 @@ class HomeViewModel extends ChangeNotifier {
         genres: movieGenres,
       ));
     });
-    notifyListeners();
   }
 }
