@@ -16,10 +16,42 @@ class DetailsView extends StatefulWidget {
 }
 
 class _DetailsViewState extends State<DetailsView> {
+  Animation<double> controller;
+  Animation<Offset> buttonTranslation;
+  Animation<Offset> textTranslation;
+
   @override
   void initState() {
     //TODO: chamar getMovieDetails
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (controller == null) {
+      controller = ModalRoute.of(context).animation;
+
+      textTranslation = Tween(
+        begin: Offset(0.0, 10.0),
+        end: Offset(0.0, 0.0),
+      ).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Interval(0.6, 0.8, curve: Curves.linear),
+        ),
+      );
+
+      buttonTranslation = Tween(
+        begin: Offset(-5.0, 0.0),
+        end: Offset(0.0, 0.0),
+      ).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Interval(0.0, 0.6, curve: Curves.linear),
+        ),
+      );
+    }
   }
 
   @override
@@ -48,7 +80,11 @@ class _DetailsViewState extends State<DetailsView> {
                       children: [
                         Align(
                           alignment: Alignment.topLeft,
-                          child: BackButton(),
+                          child: BackButton(
+                            controller: controller,
+                            textTranslation: textTranslation,
+                            buttonTranslation: buttonTranslation,
+                          ),
                         ),
                         SizedBox(
                           height: size.height * 0.08,
@@ -295,44 +331,70 @@ class InfoBox extends StatelessWidget {
 }
 
 class BackButton extends StatelessWidget {
+  BackButton({this.textTranslation, this.controller, this.buttonTranslation});
+
+  final Animation<Offset> textTranslation;
+  final Animation<Offset> buttonTranslation;
+  final Animation<double> controller;
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () => Navigator.pop(context),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(size.height * 0.03),
-          boxShadow: [
-            BoxShadow(
-              color: KLightGrey,
-              spreadRadius: 2,
-              blurRadius: 5,
-            ),
-          ],
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Icons.arrow_back_ios,
-              size: size.height * 0.02,
-              color: KDarkGrey,
-            ),
-            SizedBox(
-              width: size.width * 0.01,
-            ),
-            Text(
-              'Voltar',
-              style: TextStyle(
-                fontSize: 16,
-                color: KDarkGrey,
+      child: AnimatedBuilder(
+        animation: controller,
+        builder: (context, child) {
+          return FractionalTranslation(
+            translation: buttonTranslation.value,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(size.height * 0.03),
+                boxShadow: [
+                  BoxShadow(
+                    color: KLightGrey,
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                  ),
+                ],
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.arrow_back_ios,
+                    size: size.height * 0.02,
+                    color: KDarkGrey,
+                  ),
+                  SizedBox(
+                    width: size.width * 0.01,
+                  ),
+                  FractionalTranslation(
+                    translation: textTranslation.value,
+                    child: Text(
+                      'Voltar',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: KDarkGrey,
+                      ),
+                    ),
+                  ),
+                  /*
+                  Text(
+                    'Voltar',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: KDarkGrey,
+                    ),
+                  ),
+                  */
+                ],
               ),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

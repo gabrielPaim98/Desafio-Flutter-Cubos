@@ -20,7 +20,7 @@ class HomeViewModel extends ChangeNotifier {
   Timer _timer;
 
   void onMoviePressed(BuildContext context, int movieId, String urlTest) {
-    Navigator.push(
+    /*Navigator.push(
       context,
       MaterialPageRoute(
         builder: (BuildContext context) => DetailsView(
@@ -28,6 +28,26 @@ class HomeViewModel extends ChangeNotifier {
           urlTest: urlTest,
         ),
       ),
+    );*/
+
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+          pageBuilder: (context, animation, anotherAnimation) {
+            return DetailsView(
+              movieId: movieId,
+              urlTest: urlTest,
+            );
+          },
+          transitionDuration: Duration(milliseconds: 800),
+          transitionsBuilder: (context, animation, anotherAnimation, child) {
+            animation =
+                CurvedAnimation(curve: Curves.decelerate, parent: animation);
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          }),
     );
   }
 
