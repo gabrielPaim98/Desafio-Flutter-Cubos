@@ -62,7 +62,6 @@ class HomeViewModel extends ChangeNotifier {
     await getGenres();
     await getMovies();
     isLoading = false;
-    print('oi');
     notifyListeners();
   }
 

@@ -197,33 +197,24 @@ class _HomeViewState extends State<HomeView> {
   }
 }
 
-class CategoryFilter extends StatefulWidget {
+class CategoryFilter extends StatelessWidget {
   CategoryFilter({@required this.genre});
 
   final Genre genre;
-
-  @override
-  _CategoryFilterState createState() => _CategoryFilterState();
-}
-
-class _CategoryFilterState extends State<CategoryFilter> {
-  bool isSelected = false;
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Consumer<HomeViewModel>(
       builder: (context, homeModel, child) {
+        bool _isSelected = homeModel.genreFilter.contains(genre);
         return GestureDetector(
           onTap: () async {
-            setState(() {
-              isSelected = !isSelected;
-            });
-            await homeModel.onGenreFilterPressed(widget.genre);
+            await homeModel.onGenreFilterPressed(genre);
           },
           child: Container(
             decoration: BoxDecoration(
-              color: isSelected ? KDarkBlue : Colors.white,
+              color: _isSelected ? KDarkBlue : Colors.white,
               borderRadius: BorderRadius.circular(size.height * 0.03),
               border: Border.all(color: KDarkBlue, width: 0.1),
             ),
@@ -231,10 +222,10 @@ class _CategoryFilterState extends State<CategoryFilter> {
             margin: const EdgeInsets.only(top: 8, right: 8, bottom: 8),
             child: Center(
               child: Text(
-                widget.genre.name,
+                genre.name,
                 style: TextStyle(
                   fontSize: 14,
-                  color: isSelected ? Colors.white : KDarkBlue,
+                  color: _isSelected ? Colors.white : KDarkBlue,
                 ),
               ),
             ),
